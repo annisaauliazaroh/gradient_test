@@ -82,6 +82,7 @@ function UpdateTodo({item, id}) {
           <ModalBody>
             <InputGroup size="md">
               <Input
+                data-testid="update-todo-field"
                 pr="4.5rem"
                 type="text"
                 placeholder="Add a todo item"
@@ -93,7 +94,7 @@ function UpdateTodo({item, id}) {
           </ModalBody>
 
           <ModalFooter>
-            <Button h="1.5rem" size="sm" onClick={updateTodo}>Update Todo</Button>
+            <Button data-testid="update-todo-button" h="1.5rem" size="sm" onClick={updateTodo}>Update Todo</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
