@@ -29,6 +29,8 @@ jobs:
 
       - name: Run Unit Tests
         run: pytest -s -m unittest --cov=app --cov-append --cov-report=xml --cov-report=term
+        continue-on-error: false # Ensures the job fails if tests fail
+        
       - name: Run Integration Tests
         run: pytest -s -m integrationtest --cov=app --cov-append --cov-report=xml --cov-report=term
         continue-on-error: false # Ensures the job fails if tests fail
@@ -82,7 +84,6 @@ def parse_report(file_path):
 
 unit_results = parse_report('test-reports/unit-test-report.xml')
 integration_results = parse_report('test-reports/integration-test-report.xml')
-e2e_results = parse_report('test-reports/e2e-test-report.xml')
 
 comment_body = f'### Unit Test Results:\\n`{unit_results}`\\n\\n### Integration Test Results:\\n`{integration_results}`\\n\\n### End-to-End Test Results:\\n`{e2e_results}`'
 
